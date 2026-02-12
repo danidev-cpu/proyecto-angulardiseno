@@ -1,0 +1,17 @@
+p {
+  color: #fff;
+}
+
+.btn {
+  
+}
+
+.btn-outline-light:hover {
+  color: black;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-light:hover span {
+  color: black;
+}
