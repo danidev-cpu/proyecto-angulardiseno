@@ -1,4 +1,6 @@
-<div class="container mt-5">
+<div class="container mt-5 menu-page" [class.bigger-text-enabled]="biggerTextEnabled"
+  [class.align-text-enabled]="alignTextEnabled" [class.hide-images-enabled]="hideImagesEnabled"
+  [class.grayscale-enabled]="grayscaleEnabled" [class.highlight-links-enabled]="highlightLinksEnabled">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-white mb-0">Nuestra Carta</h2>
 
@@ -89,4 +91,48 @@
 
 
   </div>
+
+  <button type="button" class="accessibility-fab" (click)="toggleAccessibilityMenu()" aria-label="Abrir accesibilidad">
+    Accesibilidad
+  </button>
+
+  @if (showAccessibilityMenu) {
+  <div class="accessibility-panel card bg-dark text-white border-light">
+    <div class="card-body">
+      <h6 class="mb-3">Text</h6>
+      <div class="d-grid gap-2 mb-3">
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleTextAlign()">
+          Text align
+        </button>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleBiggerText()">
+          Bigger text
+        </button>
+      </div>
+
+      <h6 class="mb-3">Visual</h6>
+      <div class="d-grid gap-2 mb-3">
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleHideImages()">
+          Hide images
+        </button>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleGrayscale()">
+          Grayscale
+        </button>
+      </div>
+
+      <h6 class="mb-3">Orientation</h6>
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleHighlightLinks()">
+          Highlight links
+        </button>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="toggleReadingMask()">
+          Reading mask
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+  @if (readingMaskEnabled) {
+  <div class="reading-mask-overlay" [style.--mask-y.px]="readingMaskY"></div>
+  }
 </div>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { DishCard } from '../../components/dish-card/dish-card';
 import { IDish } from '../../models/dish.model';
 import { Events } from '../../services/events';
@@ -57,6 +57,14 @@ export class Menu {
   public showInputDishes: boolean = false;
   public selectedCategory: string = 'all';
   public selectedPriceOrder: 'none' | 'asc' | 'desc' = 'none';
+  public showAccessibilityMenu = false;
+  public biggerTextEnabled = false;
+  public alignTextEnabled = false;
+  public hideImagesEnabled = false;
+  public grayscaleEnabled = false;
+  public highlightLinksEnabled = false;
+  public readingMaskEnabled = false;
+  public readingMaskY = 220;
 
   public readonly categoryOptions: { value: string; label: string }[] = [
     { value: 'all', label: 'Todas las categorías' },
@@ -133,5 +141,42 @@ export class Menu {
 
   trackByDishId(index: number, dish: IDish): string {
     return dish.id;
+  }
+
+  toggleAccessibilityMenu() {
+    this.showAccessibilityMenu = !this.showAccessibilityMenu;
+  }
+
+  toggleBiggerText() {
+    this.biggerTextEnabled = !this.biggerTextEnabled;
+  }
+
+  toggleTextAlign() {
+    this.alignTextEnabled = !this.alignTextEnabled;
+  }
+
+  toggleHideImages() {
+    this.hideImagesEnabled = !this.hideImagesEnabled;
+  }
+
+  toggleGrayscale() {
+    this.grayscaleEnabled = !this.grayscaleEnabled;
+  }
+
+  toggleHighlightLinks() {
+    this.highlightLinksEnabled = !this.highlightLinksEnabled;
+  }
+
+  toggleReadingMask() {
+    this.readingMaskEnabled = !this.readingMaskEnabled;
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    if (!this.readingMaskEnabled) {
+      return;
+    }
+
+    this.readingMaskY = event.clientY;
   }
 }

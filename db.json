@@ -35,6 +35,14 @@
       "category": "entrantes",
       "enabled": true,
       "image": "https://www.laespanolaaceites.com/wp-content/uploads/2019/06/croquetas-de-jamon-1080x671.jpg"
+    },
+    {
+      "id": "dish-1771195974291",
+      "name": "Macarrones",
+      "description": "Macarrones con queso",
+      "price": 7,
+      "category": "postres",
+      "enabled": true
     }
   ],
   "users": [
